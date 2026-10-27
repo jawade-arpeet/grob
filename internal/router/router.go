@@ -14,6 +14,8 @@ func New(
 ) *echo.Echo {
 	e := echo.New()
 
+	e.Use(mw.Request.SetRequestID)
+
 	apiGrp := e.Group("/api")
 
 	v1.MountV1Router(apiGrp, hdlr)
